@@ -1,4 +1,4 @@
-name: Teste Deploy
+name: Teste Build Docker
 
 on:
   push:
@@ -6,12 +6,12 @@ on:
       - main
 
 jobs:
-  teste:
+  build:
     runs-on: ubuntu-latest
 
     steps:
       - name: Baixar código
         uses: actions/checkout@v4
 
-      - name: Testar pipeline
-        run: echo "Pipeline rodou com sucesso"
+      - name: Build da imagem
+        run: docker build -t teste-deploy:latest .
