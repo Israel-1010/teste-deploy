@@ -1,0 +1,17 @@
+name: Teste Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  teste:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar código
+        uses: actions/checkout@v4
+
+      - name: Testar pipeline
+        run: echo "Pipeline rodou com sucesso"
