@@ -1,4 +1,4 @@
-name: Teste Build Docker
+name: Build Teste Deploy
 
 on:
   push:
@@ -10,8 +10,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Baixar código
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Build da imagem
+      - name: Build
         run: docker build -t teste-deploy:latest .
+
+      - name: Tag
+        run: docker tag teste-deploy:latest registry.clubepaineiras.com.br/teste-deploy:latest
+
+      - name: Push
+        run: docker push registry.clubepaineiras.com.br/teste-deploy:latest
